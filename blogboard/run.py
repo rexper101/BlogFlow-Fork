@@ -93,29 +93,6 @@ Examples
     # The single compiled graph is smart enough to route to NewsAgent if domain=='ainews'
     final_state = graph.invoke(initial_state, config=config)
 
-    # ── Summary ───────────────────────────────────────────────────────────────
-    print(f"\n{'='*55}")
-    if dry_run:
-        print(f"  [DRY RUN] Pipeline completed — no files were written.")
-        domain = final_state.get("domain", "?")
-        topic  = final_state.get("topic", "?")
-        slug   = final_state.get("slug", "?")
-        print(f"  Chosen Domain : {domain}")
-        print(f"  Chosen Topic  : {topic}")
-        print(f"  Would have generated:")
-        print(f"    -> frontend/blogs/{domain}/{slug}.md")
-        print(f"    -> frontend/blogs/{domain}/articles.json")
-    else:
-        domain    = final_state.get("domain", "?")
-        title     = final_state.get("title", "?")
-        md_path   = final_state.get("md_path", "?")
-        read_time = final_state.get("read_time", "?")
-        print(f"  🎉 Done!  Article generated successfully.")
-        print(f"  Title     : {title}")
-        print(f"  Domain    : {domain}")
-        print(f"  Read time : {read_time}")
-        print(f"  File      : {md_path}")
-    print(f"{'='*55}\n")
 
 
 if __name__ == "__main__":
