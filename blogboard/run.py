@@ -80,20 +80,6 @@ Examples
     print(f"  Dry run : {dry_run}")
     print(f"{'='*55}")
 
-    # ── Build initial state and invoke the graph ──────────────────────────────
-    initial_state = {
-        "date":    date_str,
-        "dry_run": dry_run,
-    }
-    
-    if run_ainews:
-        initial_state["domain"] = "ainews"
-
-    config = {"configurable": {"thread_id": "blogboard-1"}}
-    # The single compiled graph is smart enough to route to NewsAgent if domain=='ainews'
-    final_state = graph.invoke(initial_state, config=config)
-
-
-
+ 
 if __name__ == "__main__":
     main()
