@@ -73,13 +73,6 @@ Examples
     dry_run  = args.dry_run
     run_ainews = args.ainews
 
-    # ── Banner ────────────────────────────────────────────────────────────────
-    print(f"\n{'='*55}")
-    print(f"  BlogBoard — LangGraph Article Generator")
-    print(f"  Date    : {date_str}")
-    print(f"  Dry run : {dry_run}")
-    print(f"{'='*55}")
-
  
 if __name__ == "__main__":
     main()
