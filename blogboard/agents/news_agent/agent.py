@@ -48,4 +48,34 @@ def news_node(state: BlogState) -> BlogState:
         news_summary = response["messages"][-1].content
         print(f"  [AGENT] Formulated research context ({len(news_summary)} chars).")
 
-  
+    # --- Step 2: Generation ---
+    print("  [AGENT] Drafting the news blog...")
+    validator_feedback = ""
+    if state.get("validator_feedback"):
+        validator_feedback = f"CRITICAL FEEDBACK FROM PREVIOUS DRAFT. You must fix these issues:\n{state.get('validator_feedback')}"
+
+    prompt = prompt_manager.get_prompt(
+        prompt_name="News_Generation_Prompt",
+        fallback_prompt=NEWS_GENERATION_PROMPT,
+        cat_label=cat_label,
+        topic=topic,
+        news_context=news_summary,
+        validator_feedback=validator_feedback
+    )
+    
+    llm_service_gen = LLMAgentService(temperature=0.4) # Slightly lower temperature for factual synthesis
+    res_gen = llm_service_gen.llm.invoke(prompt)
+    
+    content = res_gen.content.strip()
+    rt = _read_time(content)
+    
+    print(f"  [AGENT] Generated {len(content.split())} words. Read time: {rt}")
+
+    return {
+        **state,
+        "domain": domain,
+        "topic": topic,
+        "news_data": news_summary,
+        "content": content,
+        "read_time": rt
+    }
