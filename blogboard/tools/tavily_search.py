@@ -76,7 +76,4 @@ class TavilySearchTool(BaseTool):
                 
             return "\n\n".join(results)
             
-        except requests.exceptions.RequestException as e:
-            return f"Tavily search API request failed: {str(e)}"
-        except Exception as e:
-            return f"An unexpected error occurred during Tavily search: {str(e)}"
+       
