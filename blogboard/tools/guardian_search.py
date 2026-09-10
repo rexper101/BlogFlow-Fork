@@ -89,4 +89,7 @@ class GuardianSearchTool(BaseTool):
                  
             return "\n\n".join(formatted_results)
             
-       
+        except requests.exceptions.RequestException as e:
+            return f"Guardian search API request failed: {str(e)}"
+        except Exception as e:
+            return f"An unexpected error occurred during Guardian search: {str(e)}"
