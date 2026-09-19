@@ -27,7 +27,79 @@
   </head>
 
 <body>
-  
+  <!-- Ambient Background -->
+  <div class="ambient-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grid-overlay"></div>
+    <canvas id="particleCanvas"></canvas>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Blog<span class="logo-accent">Board</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="category.html#cat=ml" class="nav-link">ML</a></li>
+        <li><a href="category.html#cat=dl" class="nav-link">DL</a></li>
+        <li><a href="category.html#cat=statistics" class="nav-link">Stats</a></li>
+        <li><a href="category.html#cat=nlp" class="nav-link">NLP</a></li>
+        <li><a href="category.html#cat=cv" class="nav-link">CV</a></li>
+        <li><a href="category.html#cat=genai" class="nav-link">Gen AI</a></li>
+        <li><a href="category.html#cat=ainews" class="nav-link">AI News</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        <span>Actively Publishing</span>
+      </div>
+      <h1 class="hero-title">
+        Explore the Frontier of
+        <span class="gradient-text">Artificial Intelligence</span>
+      </h1>
+      <p class="hero-sub">
+        In-depth articles on Machine Learning, Deep Learning, NLP, Computer Vision,
+        Generative AI, and the latest breakthroughs shaping the future.
+      </p>
+      <div class="hero-cta">
+        <a href="#categories" class="btn-ghost">Browse Topics</a>
+        <a href="category.html#cat=ainews" class="btn-primary">Latest AI News →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat" id="totalBlogs">
+          <span class="stat-num" data-target="0">0</span>
+          <span class="stat-label">Articles</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">7</span>
+          <span class="stat-label">Topics</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">∞</span>
+          <span class="stat-label">Knowledge</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="neural-net" id="neuralNet"></div>
+    </div>
+  </section>
+
   <!-- Categories Section -->
   <section class="categories-section" id="categories">
     <div class="section-header">
@@ -150,7 +222,20 @@
     </div>
   </section>
 
-  
+  <!-- Recent Posts Section -->
+  <section class="recent-section">
+    <div class="section-header">
+      <span class="section-tag">Recent</span>
+      <h2 class="section-title">Latest Articles</h2>
+    </div>
+    <div class="recent-grid" id="recentPosts">
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading posts…</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
